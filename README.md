@@ -6,7 +6,7 @@ Simply connect your Android phone, choose a PNG, and the app will trace it line 
 ---
 
 ## 🖼️ Preview
-![image alt](https://github.com/X2xuyu/Insdraw/blob/main/forgithub.png?raw=true)
+![image alt](https://github.com/X2xuyu/Insdraw/blob/main/Preview.png?raw=true)
 
 Example result:  
 - Adjustable **Blur**, **Sample Step**, and **Segment Duration** for precision and speed.  
