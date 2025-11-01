@@ -25,8 +25,29 @@ Example result:
 
 ---
 
+
+## 🧠 About the Project
+
+Originally built as a fun automation tool to recreate images in Instagram Draw Mode,
+but later evolved into a full-fledged art automation GUI used by creators, pranksters, and developers alike 
+
+
+---
+
+## 📄 License
+MIT License © 2025 — Open source for educational and creative use only.
+
+---
+
 ## 🧩 Installation
 
 ### 1. Install Python dependencies
 ```bash
 pip install -r requirements.txt
+
+
+
+
+
+
+
