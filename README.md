@@ -21,7 +21,6 @@ Example result:
 ✅ Tune drawing precision (blur, step size, speed)  
 ✅ Auto device detection  
 ✅ Modern PyQt5 GUI (with theme support)  
-✅ Build as `.exe` with custom app icon  
 
 ---
 
@@ -38,12 +37,6 @@ but later evolved into a full-fledged art automation GUI used by creators, prank
 MIT License © 2025 — Open source for educational and creative use only.
 
 ---
-
-## 🧩 Installation
-
-### 1. Install Python dependencies
-```bash
-pip install -r requirements.txt
 
 
 
