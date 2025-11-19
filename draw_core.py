@@ -5,7 +5,7 @@ from PIL import Image
 
 
 def _imread_any(path):
-    """อ่านภาพแบบทนทาน: PIL ก่อน ถ้าไม่ได้ค่อยใช้ cv2"""
+    """pil -> cv2"""
     try:
         img = Image.open(path).convert("RGB")
         return np.array(img)[:, :, ::-1]  # to BGR for cv2
@@ -72,8 +72,7 @@ def preprocess_image(path, target_w, target_h, blur=2,
 
 def extract_contours(mask, min_area=20):
     """
-    ดึงเส้นเป็นคอนทัวร์ (เก็บเส้นเล็ก ๆ ด้วย min_area=20)
-    คืนค่า: list ของ numpy array จุด (x,y) ต่อเนื่อง
+    x,y
     """
     cnts, _ = cv2.findContours(mask, cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)
     out = []
@@ -89,8 +88,7 @@ def extract_contours(mask, min_area=20):
 
 def sample_points(contour, step=1):
     """
-    เก็บจุดทุก 'step' จุดจากคอนทัวร์ (step=1 = ละเอียดสุด)
-    และบีบจุดซ้ำซ้อน (ติดกัน, กระพริบ)
+     step=1 = ละเอียดสุด
     """
     if step < 1:
         step = 1
@@ -115,10 +113,6 @@ def _dist2(p, q):
 def generate_swipe_commands(points, seg_ms=35, tap_thresh2=4):
     """
     แปลง polyline → ชุด ADB swipe
-    - points: array Nx2 ของพิกัดจอ
-    - seg_ms: เวลาต่อ segment (ms) — 35–45 แนะนำสำหรับละเอียด
-    - tap_thresh2: ถ้าระยะสั้นมาก ใช้ tap แทน swipe (ลดการทิ้งสโตรก)
-    คืนค่า: list[str] ของคำสั่ง 'input swipe x1 y1 x2 y2 dur'
     """
     cmds = []
     if points is None or len(points) < 2:
@@ -143,7 +137,7 @@ def generate_swipe_commands(points, seg_ms=35, tap_thresh2=4):
 
 def make_preview(mask):
     """
-    สร้างภาพพรีวิว BGR ให้ GUI แสดง (พื้นดำ เส้นขาว)
+    building preview BGR to show GUI
     """
     if mask.ndim == 2:
         bgr = cv2.cvtColor(mask, cv2.COLOR_GRAY2BGR)
@@ -156,3 +150,4 @@ def make_preview(mask):
     fg[np.where(mask == 0)] = (0, 0, 0)
     out = cv2.add(bg, fg)
     return out
+
